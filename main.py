@@ -13,11 +13,10 @@ def translate_text(target: str, text: str) -> dict:
 
     result = translate_client.translate(text, target_language=target)
 
-    print("Text: {}".format(result["input"]))
-    print("Translation: {}".format(result["translatedText"]))
-    print("Detected source language: {}".format(result["detectedSourceLanguage"]))
-
-    return result
+    # print("Text: {}".format(result["input"]))
+    # print("Translation: {}".format(result["translatedText"]))
+    # print("Detected source language: {}".format(result["detectedSourceLanguage"]))
+    return result["translatedText"]
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -25,7 +24,7 @@ def index():
 
 @app.route('/tr/<text>/<lang>')
 def perevod(text, lang):
-    return translate_text(lang, text)
+    return  translate_text(lang, text)
 
 
 if __name__ == '__main__':
